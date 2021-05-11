@@ -6,11 +6,13 @@ from cocoa.booking import BookingService
 
 # main class for notification service
 class NotifierService:
+    sorryMessage = 'Sorry, you took too long to make a choice.'
     def __init__(self, bookingsvc: BookingService):
         self.bookingsvc = bookingsvc
 
     # Notify method
-    async def notify_schedule(self, all_meetings, channel: TextChannel, client: Client, current_user_id: int):
+    async def notify_schedule(self, all_meetings, channel: TextChannel, client: Client, current_user_id: int,
+                              sorryMessage=sorryMessage):
         message_response = ''
         reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
         i = 0
@@ -29,7 +31,7 @@ class NotifierService:
             try:
                 meeting_choice = await client.wait_for('message', timeout=120)
             except asyncio.TimeoutError:
-                return await channel.send('Sorry, you took too long to make a choice.')
+                return await channel.send(sorryMessage)
         else:
             await channel.send(
                 "Looks like there are no matches till now")
@@ -39,7 +41,8 @@ class NotifierService:
         self.bookingsvc.book_meeting(meeting_info, current_user_id)
         await channel.send('Coffee break booked!')
 
-    async def notify_cancel(self, all_meetings, channel: TextChannel, client: Client, current_user_id: int):
+    async def notify_cancel(self, all_meetings, channel: TextChannel, client: Client, current_user_id: int,
+                            sorryMessage=sorryMessage):
         message_response = ''
         reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
         i = 0
@@ -58,7 +61,7 @@ class NotifierService:
             try:
                 meeting_choice = await client.wait_for('message', timeout=120)
             except asyncio.TimeoutError:
-                return await channel.send('Sorry, you took too long to make a choice.')
+                return await channel.send(sorryMessage)
         else:
             await channel.send(
                 "You haven't booked any meetings yet !")
@@ -68,13 +71,13 @@ class NotifierService:
         self.bookingsvc.cancel_meeting(meeting_info)
         await channel.send('Meeting cancelled !')
 
-    async def notify_reschedule(self, all_meetings, user: User, channel: TextChannel, client: Client):
+    async def notify_reschedule(self, all_meetings, user: User, channel: TextChannel, client: Client, sorryMessage='Sorry, you took too long to make a choice.'):
         await channel.send(
             "Please type out your old meeting choice")
         try:
             old_meeting_choice = await client.wait_for('message', timeout=120)
         except asyncio.TimeoutError:
-            return await channel.send('Sorry, you took too long.')
+            return await channel.send(sorryMessage)
         
         # Ask for new meeting choice
         message_response = ''
@@ -88,7 +91,7 @@ class NotifierService:
         try:
             new_meeting_choice = await client.wait_for('message', timeout=120)
         except asyncio.TimeoutError:
-            return await channel.send('Sorry, you took too long to make a choice.')
+            return await channel.send(sorryMessage)
 
         # Call the reschedule service
         for meeting_info in all_meetings:
