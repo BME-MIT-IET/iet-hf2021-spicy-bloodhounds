@@ -39,12 +39,33 @@ failed, help command is not implimented
 passed, the user succesfully is setup
 
 
+## Test Case 4: _ Schedule new meeting-happy path_
+
+- [ ] cocoapls schedule new
+
+￼![image](https://user-images.githubusercontent.com/27647952/118286868-324df100-b4d3-11eb-9fb3-276fcad75d5c.png)
+
+
+### Result:
+passed, the meeting have beed setup and when a person will want to also create a new meeting, this two user will be paired
 
 
 
-## Test Case 4: _setup user_
+## Test Case 5: _create new meeting with same time_
 
-- [ ] cocoapls setup
+- [ ] cocoapls schedule new
+
+￼![image](https://user-images.githubusercontent.com/27647952/118287134-73460580-b4d3-11eb-8e58-3141eae10621.png)
+
+
+### Result:
+passed, the meeting is not set, if it's same as the one that already exists
+
+
+
+## Test Case 6: _schedule meeting with someone_
+
+- [ ] cocoapls schedule new
 
 
 ### Result:
@@ -52,85 +73,85 @@ passed, the user succesfully is setup
 
 
 
+## Test Case 7: _create meeting with the wrong format for the time_
 
-## Test Case 4: _setup user_
+- [ ] cocoapls schedule new
 
-- [ ] cocoapls setup
+![image](https://user-images.githubusercontent.com/27647952/118287348-aa1c1b80-b4d3-11eb-8248-e1dfe35a0bb9.png)
+
 
 
 ### Result:
-passed, the user succesfully is setup
+Passed, the meeting is not set but the use is not notified about the error
 
 
 
 
-## Test Case 4: _setup user_
+## Test Case 8: _use wrong command_
 
-- [ ] cocoapls setup
+- [ ] cocoapls schedule
+
+![image](https://user-images.githubusercontent.com/27647952/118287522-d041bb80-b4d3-11eb-83c4-394d2fb0ed84.png)
+
 
 
 ### Result:
-passed, the user succesfully is setup
+passed, the bot say that the command is not correct, but the bot should display the right commands
 
 
 
-## Test Case 4: _setup user_
 
-- [ ] cocoapls setup
+## Test Case 9: _cancel meetings_
+
+- [ ] cocoapls schedule cancel
+
+![image](https://user-images.githubusercontent.com/27647952/118287636-ed768a00-b4d3-11eb-9591-f9eef6ffc56b.png)
+
 
 
 ### Result:
-passed, the user succesfully is setup
+failed, the bot did not notify that there are no meetings
 
 
 
+## Test Case 10: _list meetings when there are no meetings_
 
-## Test Case 4: _setup user_
+- [ ] cocoapls list meetings
 
-- [ ] cocoapls setup
+![image](https://user-images.githubusercontent.com/27647952/118287786-1434c080-b4d4-11eb-944d-5f9950a1a213.png)
+
 
 
 ### Result:
-passed, the user succesfully is setup
+failed, the bot does not show that there are no meetings
 
 
 
-## Test Case 4: _setup user_
+## Test Case 11: _delete user_
 
-- [ ] cocoapls setup
+- [ ] cocoapls delete me
 
-
-### Result:
-passed, the user succesfully is setup
-
-
-
-## Test Case 4: _setup user_
-
-- [ ] cocoapls setup
+![image](https://user-images.githubusercontent.com/27647952/118287893-2dd60800-b4d4-11eb-8acf-dc03d9bcd59b.png)
 
 
 ### Result:
-passed, the user succesfully is setup
+passed, the use is deleted
 
 
 
-## Test Case 4: _setup user_
+## Test Case 12: _how bot behaves after the error in the input_
 
-- [ ] cocoapls setup
+- [ ] cocoapls schedule, cocoapls delete me ...
+
+￼![image](https://user-images.githubusercontent.com/27647952/118287986-45ad8c00-b4d4-11eb-8565-e1b288057810.png)
+
 
 
 ### Result:
-passed, the user succesfully is setup
+failed. The bot is down
 
 
-## Test Case 4: _setup user_
 
-- [ ] cocoapls setup
-
-
-### Result:
-passed, the user succesfully is setup
 
 
 
