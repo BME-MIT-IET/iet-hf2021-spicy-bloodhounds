@@ -7,14 +7,13 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-# Needs to be tested
-#RUN apt-get install postgresql-server-dev-10 gcc python3-dev musl-dev
+RUN apt update && apt-get -y install sudo
+RUN apt-get install -y wget
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc
+RUN apt-get install -y postgresql
 
-# ubuntu version
 RUN apt-get update && apt-get -y install libpq-dev gcc && pip install psycopg2
 
-# mac version
-#RUN brew install postgresql && pip install psycopg2 
 
 # Install pip requirements
 COPY requirements.txt .
