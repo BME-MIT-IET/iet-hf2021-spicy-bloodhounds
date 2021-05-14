@@ -7,6 +7,7 @@ Cocoa is a Discord bot to schedule "coffee-breaks" for server members. You can u
 - [ ] Running a static analysis tool and reviewing the reported problems (SonarQube, FindBugs, VS Code Analyzer, Codacy, Coverity Scan...). As static analysis tools could find numerous problems, it is enough to review only a subset of them. If the team agrees with the reported problem, it can fix some of them. Try to review different types of problem and concentrate on more complex ones (e.g. not just formatting errors).
 
 - [ ] Supporting deployment (Docker, Vagrant...)
+- [ ] Performing manual code review on some part of the application (GitHub, Gerrit...)
 
 
 ### Testing
