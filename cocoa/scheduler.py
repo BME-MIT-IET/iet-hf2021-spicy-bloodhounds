@@ -17,7 +17,6 @@ async def get_time(message: str, channel: TextChannel, client: Client):
 async def get_start_end_time(channel: TextChannel, client: Client):
     start = await get_time("What time suits you for a coffee break? Enter according to the format `dd/mm hour:minutes` in your local timezone", channel, client)
     start = datetime.strptime(start.content, '%d/%m %H:%M')
-    # start = await get_time("Please type the start time of the meeting in the format %m/%d/%Y, %H:%M:%S", channel, client)
     delta = await get_time("How long (in minutes) will you be available for?", channel, client)
     start = start.replace(year=datetime.now().year)
     delta = timedelta(minutes=int(delta.content))
