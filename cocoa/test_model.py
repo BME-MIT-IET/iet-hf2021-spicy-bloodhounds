@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from cocoa.model import ModelService
+from cocoa.model import ModelService, User
 
 
 class TestModelService(TestCase):
@@ -13,7 +13,7 @@ class TestModelService(TestCase):
     def test_get_meetings(self):
         self.fail()
 
-    def test_add_meeting(self):
+    def test_add_user(self):
         uid = 12334
         username = 'User'
         description = "I love pyhon"

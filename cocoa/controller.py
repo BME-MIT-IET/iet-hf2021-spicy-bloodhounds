@@ -36,6 +36,10 @@ class Controller:
             await self.schedulersvc.cancel(author.id, channel, client)
         elif command == 'list meetings':
             await self.schedulersvc.list_booked_meetings(author.id, channel)
+
+        elif command == 'help':
+            await message.channel.send("You can use the following commands.\n1. setup\n2. delete me\n3. schedule "
+                                       "new\n4. schedule cancel\n5. list meetings\n6. help")
         else:
             await message.channel.send("Sorry, I'm not sure what you mean. Please use the help command for a list of "
                                        "commands you can use.")
