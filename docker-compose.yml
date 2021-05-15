@@ -16,6 +16,7 @@ services:
       - ./.env
     environment:
       - DB_URI=${DB_URI}    
+      - BOT_TOKEN=${BOT_TOKEN}
    
   db:
     container_name: postgres
