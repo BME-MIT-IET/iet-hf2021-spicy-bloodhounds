@@ -15,7 +15,7 @@ services:
     env_file:
       - ./.env
     environment:
-      - DB_URI=${DB_URI}    
+      - DATABASE_URL=${DATABASE_URL}    
       - BOT_PREFIX=${BOT_PREFIX}
    
   db:
