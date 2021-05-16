@@ -12,4 +12,9 @@ Which is the great code smell, since is case variables, attributes and methods a
 * Repeated strings
 In some cases Cocoa bot project contained duplication strings (bot answers the same way in different cases. It was decided to move the strings to the variables and constants, so we can reuse them later.
 
+## Codacy
+
+The second level of static analysis was connection of the repository to the Codacy tool. Which appeared to be more sofisticated than the others. Codacy found 91 issues. The majority of which were just simple coding style issues, however, there are also some security and error prone vulnerabilities
+
+
 
