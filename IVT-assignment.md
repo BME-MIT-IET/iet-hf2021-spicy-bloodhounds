@@ -17,25 +17,6 @@ Cocoa is a Discord bot to schedule "coffee-breaks" for server members. You can u
 - [ ] Measuring code coverage for tests and extending test suite based on the results (JaCoCo, OpenCover, Coveralls, Codecov.io...)
 
 
-# CI and static techniques
-
-
-
-# Testing :beetle:
-
-- [X] Manual tests
-
-We analysed all the commands that the bot has and different edge cases that could happen doing the communication with the bot. We documented all the test cases in the `manual-tests.md`. There was a first Run for the cases and some of the bugs where discovered such as :
-
-- Important not implemented commands such as `help`
-- not handling exceptions doing reading the user input and converting it to a specific time (such as time)
-- the bot sometimes does not communicat important information such as doing the `list meetings` and `cancel meetings`, if there there were no meetings the bot would not say anything to the user
-- the bot is down if there was an error
-
-This [PR](https://github.com/BME-MIT-IET/iet-hf2021-spicy-bloodhounds/pull/13) was made to this the following issues (at least partially). 
-Another round of manual tests was made for the failed tests.
-
-
 
 
 
