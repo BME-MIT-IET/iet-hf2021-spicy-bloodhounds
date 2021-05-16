@@ -16,5 +16,8 @@ In some cases Cocoa bot project contained duplication strings (bot answers the s
 
 The second level of static analysis was connection of the repository to the Codacy tool. Which appeared to be more sofisticated than the others. Codacy found 91 issues. The majority of which were just simple coding style issues, however, there are also some security and error prone vulnerabilities
 
+![Screen Shot 2021-05-16 at 19 48 46](https://user-images.githubusercontent.com/57729718/118407233-1a67a000-b680-11eb-9b58-5496a63a6c36.png)
+
+
 
 
