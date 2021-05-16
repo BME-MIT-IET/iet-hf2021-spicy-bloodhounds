@@ -18,6 +18,15 @@ The second level of static analysis was connection of the repository to the Coda
 
 ![Screen Shot 2021-05-16 at 19 48 46](https://user-images.githubusercontent.com/57729718/118407233-1a67a000-b680-11eb-9b58-5496a63a6c36.png)
 
+Unused imports and variable assignments were immediately corrected as well as the tests (which caused a lot of issues at the time of evaluation).
+
+It was decided by the team, that README file errors and warnings are not considered as critical ones, to be corrected
+
+![Screen Shot 2021-05-16 at 19 59 57](https://user-images.githubusercontent.com/57729718/118407494-4b94a000-b681-11eb-9159-ed15b554294f.png)
+
+
+
+
 
 
 
