@@ -15,11 +15,19 @@ async def get_time(message: str, channel: TextChannel, client: Client):
 
 
 async def get_start_end_time(channel: TextChannel, client: Client):
-    start = await get_time("What time suits you for a coffee break? Enter according to the format `dd/mm hour:minutes` in your local timezone", channel, client)
-    start = datetime.strptime(start.content, '%d/%m %H:%M')
+    start = await get_time("What time suits you for a coffee break? Enter according to the format `dd/mm "
+                           "hour:minutes` in your local timezone", channel, client)
+    try:
+        start = datetime.strptime(start.content, '%d/%m %H:%M')
+    except Exception:
+        return await channel.send("Sorry,wrong format")
+
     delta = await get_time("How long (in minutes) will you be available for?", channel, client)
-    start = start.replace(year=datetime.now().year)
-    delta = timedelta(minutes=int(delta.content))
+    try:
+        start = start.replace(year=datetime.now().year)
+        delta = timedelta(minutes=int(delta.content))
+    except Exception:
+        return await channel.send("Sorry, wrong format")
     end = start + delta
     return start, end
 
@@ -32,6 +40,8 @@ class Scheduler:
 
     async def schedule(self, uid: int, channel: TextChannel, client: Client):
         start_time, end_time = await get_start_end_time(channel, client)
+        if not(start_time and end_time):
+            return
         self.modelsvc.add_schedule(uid, start_time, end_time)
         potential_meetings = self.modelsvc.find_meetings(start_time, end_time, self.meeting_length)
         potential_meetings = potential_meetings[0:5]
@@ -40,9 +50,9 @@ class Scheduler:
             # Call notifier service and send notification of possible meetings
             await self.notifiersvc.notify_schedule(potential_meetings, channel, client, current_user_id=uid)
 
-    def cancel(self, uid: int, channel: TextChannel, client: Client, user: User):
+    def cancel(self, uid: int, channel: TextChannel, client: Client):
         scheduled_meetings = self.modelsvc.get_meetings(uid=uid)
-        self.notifiersvc.notify_cancel(scheduled_meetings, channel, client, user)
+        self.notifiersvc.notify_cancel(scheduled_meetings, channel, client, uid)
 
     def reschedule(self, uid: int, user: User, channel: TextChannel, client: Client):
         scheduled_meetings = self.modelsvc.get_meetings(uid=uid)

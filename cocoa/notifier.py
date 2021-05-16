@@ -46,6 +46,8 @@ class NotifierService:
         message_response = ''
         reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
         i = 0
+        if not all_meetings:
+            message_response = 'You have no meetings'
         for meeting_info in all_meetings:
             user_id, start, end = meeting_info['user'], meeting_info['start'], meeting_info['end']
             if user_id != current_user_id:
@@ -102,6 +104,8 @@ class NotifierService:
     async def notify_multiple_meetings(self, user: User, channel: TextChannel):
         user_meetings_notif = 'List of all the meetings you have booked :\n'
         all_user_meetings = self.bookingsvc.list_all_meetings(user.id)
+        if not all_user_meetings:
+            user_meetings_notif += "There are no meetings"
         for meeting_info in all_user_meetings:
             user_id2 = meeting_info['user2']
             user_meetings_notif += 'Meeting with <@{}>'.format(user_id2)
