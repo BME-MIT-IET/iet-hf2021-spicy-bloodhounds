@@ -14,7 +14,6 @@ Cocoa is a Discord bot to schedule "coffee-breaks" for server members. You can u
 
 - [ ] Creating or extending unit tests (xUnit...)
 - [ ] Designing, executing and documenting manual tests
-- [ ] Measuring code coverage for tests (JaCoCo, OpenCover, Coveralls, Codecov.io...)
 
 
 
